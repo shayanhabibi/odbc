@@ -1,5 +1,14 @@
-import odbcsql, odbctypes, tables, odbcerrors, times, odbcreporting, strformat, odbcfields
-import strutils
+import std/tables
+import std/odbcsql
+import std/times
+import std/strformat
+import std/strutils
+
+import odbc/odbctypes
+import odbc/odbcerrors
+import odbc/odbcreporting
+import odbc/odbcfields
+
 
 var
   # Default buffer size for parameters and also
@@ -223,6 +232,8 @@ proc seqToBuf(seqVal: SQLBinaryData, buffer: pointer, count: int) {.inline.} =
   for idx in 0..<count:
     sbuf[idx] = seqVal[idx]
 
+
+
 proc readFromBuf*(dataItem: var SQLData, buffer: ParamBuffer, indicator: int) =
   # this function assumes the data item kind is already set up
   case dataItem.kind
@@ -419,4 +430,3 @@ proc odbcParamStatement*(sqlStatement: string, paramPrefix: string = "?"): strin
       result &= sqlStatement[start .. sqlStatement.len - 1]
 
   when defined(odbcdebug): echo &"ODBC Statement: {result}"
-

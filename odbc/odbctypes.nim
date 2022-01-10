@@ -401,6 +401,7 @@ proc asBinary*(sqlData: SQLData): SQLBinaryData =
 proc asTimeInterval*(sqlData: SQLData): TimeInterval =
   ## Return `sqlData` as a time interval where possible.
   if sqlData.kind == dtTime: result = sqlData.timeVal
+  elif sqlData.kind == dtNull: result = initTimeInterval()
   else: raise newODBCException("Cannot transform " & $sqlData.kind & " to time")
 
 ## Check if a value is `null`.
@@ -420,4 +421,3 @@ converter toInt64*(sqlData: SQLData): int64 = sqlData.asInt64
 converter toTimeInterval*(sqlData: SQLData): TimeInterval = sqlData.asTimeInterval
 
 proc `$`*(handle: SqlHStmt): string = handle.repr
-
