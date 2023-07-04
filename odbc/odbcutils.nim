@@ -1,4 +1,4 @@
-import odbcsql, odbcerrors, odbcconnections, odbcreporting, odbchandles
+import db_connector/odbcsql, odbcerrors, odbcconnections, odbcreporting, odbchandles
 
 type
   SQLDriverAttribute* = tuple[key, value: string]
@@ -86,4 +86,3 @@ proc listDrivers*(con: ODBCConnection = nil): seq[SQLDriverInfo] =
       addr driver_ret, attr, attrBufLen.TSqlSmallInt, addr attr_ret)
 
   freeEnvHandle(env, rpt)
-

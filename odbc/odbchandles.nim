@@ -1,7 +1,7 @@
 # Handle stuff
 # NOTE that at the moment, this unit must be included in odbc to be compiled
 
-import odbcsql, odbcerrors, odbcreporting
+import db_connector/odbcsql, odbcerrors, odbcreporting
 
 type
   ODBCHandleType* = enum
@@ -44,6 +44,3 @@ proc setODBCType*(envHandle: SqlHEnv, rptState: var ODBCReportState) {.inline.} 
 
 proc sqlSucceeded*(resint: TSqlSmallInt): bool {.inline.} =
   result = resint == SQL_SUCCESS or resint == SQL_SUCCESS_WITH_INFO
-
-
-

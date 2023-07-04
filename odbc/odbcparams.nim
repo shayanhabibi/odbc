@@ -1,5 +1,5 @@
 import std/tables
-import std/odbcsql
+import db_connector/odbcsql
 import std/times
 import std/strformat
 import std/strutils

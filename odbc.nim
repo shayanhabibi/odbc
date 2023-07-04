@@ -9,7 +9,7 @@
 # sense to SQLBindCol simple types and SQLGetData larger, variable types in future.
 
 import
-  odbcsql,
+  db_connector/odbcsql,
   times,
   tables,
   typetraits,
@@ -404,4 +404,3 @@ template withExecuteByField*(qry: SQLQuery, actions: untyped) =
         actions
   finally:
     qry.close
-

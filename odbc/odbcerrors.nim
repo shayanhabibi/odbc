@@ -1,4 +1,4 @@
-import odbcsql, odbcreporting
+import db_connector/odbcsql, odbcreporting
 
 type
   ODBCException* = ref object of ValueError
